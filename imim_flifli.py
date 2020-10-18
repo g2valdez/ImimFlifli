@@ -37,14 +37,12 @@ window = sg.Window('ImIm FliFli'). Layout(
 reflect_line = None
 orig_image = None
 image = None
-mod1_image = None
-mod2_image = None
+mod1_imTk = None
+mod2_imTk = None
 image_height = 200
 
 while True:
 	event, output = window.Read()
-	print(event)
-	print(output)
 
 	if event is None:
 		break
@@ -84,11 +82,11 @@ while True:
 			mod2_canvas.create_image((imTk.width() * ((100 - output[1])/100), mod2_imTk.height()/2), image=mod2_imTk)
 
 
-	elif event == "Save ver1" and mod1_image != None:
+	elif event == "Save ver1" and mod1_imTk != None:
 		fname = format_ofile_name(output[0], '1')
 		make_left_image(orig_image, int(orig_image.width * (output[1]/100))).save(fname)
 
-	elif event == "Save ver2" and mod2_image != None:
+	elif event == "Save ver2" and mod2_imTk != None:
 		fname = format_ofile_name(output[0], '2')
 		make_right_image(orig_image, int(orig_image.width * (output[1]/100))).save(fname)
 
